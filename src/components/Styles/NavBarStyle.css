@@ -4,7 +4,7 @@
 }
 .navbar a {
   padding: 0.5rem 1.5rem;
-  font-size: 2rem;
+  font-size: 1.2rem;
   border-radius: 0.5rem;
   color: black;
 }
@@ -14,13 +14,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 header {
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+}
+h1 {
+  color: green;
+  font-size: 2rem;
 }

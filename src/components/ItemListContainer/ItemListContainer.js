@@ -1,16 +1,53 @@
 import React from "react";
 import ItemCount from "../ItemCount/ItemCount";
+import { ItemList } from "../ItemList/ItemList";
+
 import "./ItemListContainer.css";
 
-const ItemListContainer = (props) => {
+export const ItemListContainer = (props) => {
   return (
     <React.Fragment>
-      <section className="container-productos">
-        <h3>!Bienvendino a {props.nombre}¡ </h3>
-        <p>Muy pronto encontrará nuestros productos aquí</p>
-      </section>
       <ItemCount />
+      <ItemList items={articles} />
     </React.Fragment>
   );
 };
-export default ItemListContainer;
+
+const articles = [
+  {
+    id: 1,
+    img: "../../assets/img/porongo.png",
+    nombre: "Yerba Porongo",
+    precio: 499,
+  },
+  {
+    id: 2,
+    img: "../../assets/img/playadito.jpg",
+    nombre: "Yerba Playadito",
+    precio: 399,
+  },
+  {
+    id: 3,
+    img: "../assets/img/andresito.jpg",
+    nombre: "Yerba Andresito",
+    precio: 299,
+  },
+  {
+    id: 4,
+    img: "../assets/img/pipore.jpg",
+    nombre: "Yerba Piporé",
+    precio: 299,
+  },
+  {
+    id: 5,
+    img: "../assets/img/cbse.jpg",
+    nombre: "Yerba CBSé",
+    precio: 199,
+  },
+  {
+    id: 6,
+    img: "../assets/img/chamigo.png",
+    nombre: "Yerba Chamigo",
+    precio: 699,
+  },
+];

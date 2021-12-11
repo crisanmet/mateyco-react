@@ -5,6 +5,10 @@
   padding-top: 1rem;
   gap: 2rem;
 }
+.botones {
+  display: flex;
+  flex-direction: column;
+}
 .cantidad span {
   padding: 0 0.7rem;
   font-size: 1.7rem;

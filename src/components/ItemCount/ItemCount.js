@@ -19,12 +19,14 @@ const ItemCount = ({ initialValue = 1, stock = 10 }) => {
       <p>{value} </p>
 
       <span>/Kg</span>
-      <button type="button" className="btn" onClick={agregarCarrito}>
-        Agregar al Carrito
-      </button>
-      <button type="button" className="btn" onClick={eliminarCarrito}>
-        Eliminar del carrito
-      </button>
+      <div className="botones">
+        <button type="button" className="btn" onClick={agregarCarrito}>
+          Agregar
+        </button>
+        <button type="button" className="btn" onClick={eliminarCarrito}>
+          Eliminar
+        </button>
+      </div>
     </div>
   );
 };

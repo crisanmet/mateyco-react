@@ -1,6 +1,57 @@
-.container-productos {
+.productos-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 2rem 9%;
+}
+.productos-ind {
+  flex: 1 1 30rem;
+  text-align: center;
+  padding: 2rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+.productos-ind img {
+  height: 20rem;
+}
+.productos-ind h3 {
+  color: black;
+  font-size: 2.5rem;
+}
+.precios {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  color: #333;
+  padding: 0.5rem;
+}
+.cantidad {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding-top: 1rem;
+}
+.cantidad span {
+  padding: 0 0.7rem;
+  font-size: 1.7rem;
+}
+.productos-ind button {
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  background: green;
+  color: #fff;
+  padding: 0.8rem 3rem;
+  font-size: 1.7rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  outline: 2px solid green;
+  outline-offset: 2px;
+}
+.productos-ind button:hover {
+  background-color: black;
 }

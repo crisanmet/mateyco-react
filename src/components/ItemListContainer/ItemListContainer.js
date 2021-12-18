@@ -1,53 +1,12 @@
 import React from "react";
-import ItemCount from "../ItemCount/ItemCount";
-import { ItemList } from "../ItemList/ItemList";
+import { ItemDetailContainer } from "../ItemDetailContainer/ItemDetailContainer";
 
 import "./ItemListContainer.css";
 
 export const ItemListContainer = (props) => {
   return (
     <React.Fragment>
-      <ItemCount />
-      <ItemList items={articles} />
+      <ItemDetailContainer />
     </React.Fragment>
   );
 };
-
-const articles = [
-  {
-    id: 1,
-    img: "../../assets/img/porongo.png",
-    nombre: "Yerba Porongo",
-    precio: 499,
-  },
-  {
-    id: 2,
-    img: "../../assets/img/playadito.jpg",
-    nombre: "Yerba Playadito",
-    precio: 399,
-  },
-  {
-    id: 3,
-    img: "../../assets/img/andresito.jpg",
-    nombre: "Yerba Andresito",
-    precio: 299,
-  },
-  {
-    id: 4,
-    img: "../../assets/img/pipore.jpg",
-    nombre: "Yerba Piporé",
-    precio: 299,
-  },
-  {
-    id: 5,
-    img: "../../assets/img/cbse.jpg",
-    nombre: "Yerba CBSé",
-    precio: 199,
-  },
-  {
-    id: 6,
-    img: "../../assets/img/chamigo.png",
-    nombre: "Yerba Chamigo",
-    precio: 699,
-  },
-];

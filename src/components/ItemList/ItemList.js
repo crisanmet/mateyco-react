@@ -1,5 +1,5 @@
 import React from "react";
-import Item from "../Item/Item";
+import ItemDetail from "../Item/Item";
 
 const Promesa = new Promise((resolve, reject) => {
   try {
@@ -20,7 +20,7 @@ export const ItemList = ({ items }) => {
     <div className="productos-contenedor">
       {items.map((el) => {
         return (
-          <Item
+          <ItemDetail
             key={el.id}
             id={el.id}
             title={el.nombre}

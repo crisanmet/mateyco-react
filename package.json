@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "fake-api": "json-server --watch src/api/articles.json --port 5000",
+    "fake-api": "json-server --watch src/api/articles.json --port 3002",
     "starts": "NODE_PATH=src react-scripts start"
   },
   "eslintConfig": {

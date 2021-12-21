@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
+import React from "react";
 import NavBar from "./components/NavBar/NavBar";
 import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import "./App.css";
 
@@ -10,9 +10,16 @@ function App() {
     <Router>
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<ItemListContainer></ItemListContainer>}>
-          {" "}
-        </Route>
+        <Route
+          exact
+          path="/"
+          element={<ItemListContainer></ItemListContainer>}
+        ></Route>
+        <Route
+          exact
+          path="/producto/:id"
+          element={<ItemListContainer></ItemListContainer>}
+        ></Route>
       </Routes>
     </Router>
   );

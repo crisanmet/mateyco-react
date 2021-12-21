@@ -22,7 +22,10 @@ header {
   left: 0;
   right: 0;
 }
-h1 {
+.navbar .titulo {
   color: green;
   font-size: 2rem;
+}
+.active {
+  background-color: rgb(124, 155, 124);
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import ItemDetail from "../Item/Item";
+import { Link } from "react-router-dom";
 
 const Promesa = new Promise((resolve, reject) => {
   try {
@@ -21,6 +22,7 @@ export const ItemList = ({ items }) => {
       {items.map((el) => {
         return (
           <ItemDetail
+            nav={el.id}
             key={el.id}
             id={el.id}
             title={el.nombre}

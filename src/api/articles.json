@@ -1,40 +1,77 @@
 {
-  "Yerbas": [
+  "productos": [
     {
       "id": 1,
       "img": "http://d3ugyf2ht6aenh.cloudfront.net/stores/942/490/products/diseno-sin-titulo-421-9980cdc649943cb0c715713245527983-640-0.png",
       "nombre": "Yerba Porongo",
+      "idCategoria": 1,
       "precio": 499
     },
     {
       "id": 2,
       "img": "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/228/828/products/1187-a24f4625aff0d6ef0715999515959970-640-0.jpeg",
       "nombre": "Yerba Playadito",
+      "idCategoria": 1,
       "precio": 399
     },
     {
       "id": 3,
       "img": "http://d2r9epyceweg5n.cloudfront.net/stores/001/108/127/products/yerba-andresito-comun-500gbyb1-311bf76abff5ce98fd15881188042110-640-0.png",
       "nombre": "Yerba Andresito",
+      "idCategoria": 1,
       "precio": 299
     },
     {
       "id": 4,
       "img": "http://d3ugyf2ht6aenh.cloudfront.net/stores/602/652/products/suave-5001-7f58f033b29850ab0c16241177455947-640-0.png",
       "nombre": "Yerba Piporé",
+      "idCategoria": 1,
       "precio": 299
     },
     {
       "id": 5,
       "img": "http://d2r9epyceweg5n.cloudfront.net/stores/001/392/250/products/cbse1-09ac63414d81447e4a16051516165890-640-0.png",
       "nombre": "Yerba CBSé",
+      "idCategoria": 1,
       "precio": 199
     },
     {
       "id": 6,
       "img": "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/182/795/products/1231-03384fb2a4bb3844fa16297381559342-640-0.png",
       "nombre": "Yerba Chamigo",
+      "idCategoria": 1,
       "precio": 699
+    },
+    {
+      "id": 7,
+      "img": "http://d2r9epyceweg5n.cloudfront.net/stores/001/273/828/products/281-318622751a0cd3d2ec15954473068590-640-0.png",
+      "nombre": "Termo Metal 1lt",
+      "idCategoria": 2,
+      "precio": 2699
+    },
+    {
+      "id": 8,
+      "img": "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/020/467/products/1239166e-ef51-4ce2-a4a2-edf9415ed8fe1-9da105f6c651a91ba515937060805655-640-0.jpeg",
+      "nombre": "Termo Lumilagro 1lt",
+      "idCategoria": 2,
+      "precio": 1699
+    },
+    {
+      "id": 9,
+      "img": "http://d2r9epyceweg5n.cloudfront.net/stores/001/848/361/products/stanley1-5cd1690e628d65b9dd16316208891537-640-0.jpg",
+      "nombre": "Termo Stanley 1lt",
+      "idCategoria": 2,
+      "precio": 3699
+    }
+  ],
+  "categorias": [
+    {
+      "id": 1,
+      "categoria": "Yerbas"
+    },
+    {
+      "id": 2,
+      "categoria": "Termos"
     }
   ]
 }

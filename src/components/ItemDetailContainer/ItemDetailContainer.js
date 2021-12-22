@@ -6,9 +6,8 @@ export const ItemDetailContainer = () => {
   const [items, setItems] = useState([]);
   const [item, setItem] = useState([]);
   const { id } = useParams();
-  console.log(id, item);
 
-  const API = "http://localhost:3002/Yerbas";
+  const API = "http://localhost:3002/productos";
   const options = {
     headers: {
       "Content-Type": "application/json",
@@ -35,12 +34,11 @@ export const ItemDetailContainer = () => {
     const getItem = async () => {
       try {
         let responseApi = await fetch(
-          `http://localhost:3002/Yerbas/${id}`,
+          `http://localhost:3002/producto/${id}`,
           options
         );
         let jsonResponse = await responseApi.json();
 
-        console.log(jsonResponse);
         setItem(jsonResponse);
       } catch (error) {
         console.log(error);
@@ -65,6 +63,7 @@ export const ItemDetailContainer = () => {
     <div className="productos-contenedor">
       {items &&
         items.map((item) => {
+          console.log(item);
           return (
             <ItemDetail
               key={item.id}

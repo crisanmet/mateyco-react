@@ -13,8 +13,8 @@ function NavBar() {
         <NavLink to="/" activeClassName="active">
           Home
         </NavLink>
-        <NavLink to="/productos" activeClassName="active">
-          Productos
+        <NavLink to="/category" activeClassName="active">
+          Categorias
         </NavLink>
         <NavLink to="/nosotros" activeClassName="active">
           Nosotros

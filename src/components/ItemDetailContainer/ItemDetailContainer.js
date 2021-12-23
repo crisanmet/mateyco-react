@@ -5,7 +5,8 @@ import { useParams } from "react-router-dom";
 export const ItemDetailContainer = () => {
   const [items, setItems] = useState([]);
   const [item, setItem] = useState([]);
-  const { id } = useParams();
+  const { categoryName, id } = useParams();
+  console.log(categoryName, id);
 
   const API = "http://localhost:3002/productos";
   const options = {
@@ -21,7 +22,6 @@ export const ItemDetailContainer = () => {
         let responseApi = await fetch(API, options);
         let jsonResponse = await responseApi.json();
 
-        console.log(jsonResponse);
         setItems(jsonResponse);
       } catch (error) {
         console.log(error);
@@ -31,12 +31,9 @@ export const ItemDetailContainer = () => {
   }, []);
 
   useEffect(() => {
-    const getItem = async () => {
+    const getItemCategory = async () => {
       try {
-        let responseApi = await fetch(
-          `http://localhost:3002/producto/${id}`,
-          options
-        );
+        let responseApi = await fetch(`${API}/${id}`, options);
         let jsonResponse = await responseApi.json();
 
         setItem(jsonResponse);
@@ -44,13 +41,14 @@ export const ItemDetailContainer = () => {
         console.log(error);
       }
     };
-    getItem();
-  }, [id]);
+    getItemCategory();
+  }, [categoryName, id]);
 
   if (id > 0) {
     return (
       <ItemDetail
         key={item.id}
+        category={item.categoryName}
         id={item.id}
         title={item.nombre}
         image={item.img}
@@ -63,10 +61,10 @@ export const ItemDetailContainer = () => {
     <div className="productos-contenedor">
       {items &&
         items.map((item) => {
-          console.log(item);
           return (
             <ItemDetail
               key={item.id}
+              category={item.categoryName}
               id={item.id}
               title={item.nombre}
               image={item.img}

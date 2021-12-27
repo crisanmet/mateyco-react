@@ -6,7 +6,6 @@ export const ItemDetailContainer = () => {
   const [items, setItems] = useState([]);
   const [item, setItem] = useState([]);
   const { categoryName, id } = useParams();
-  console.log(categoryName, id);
 
   const API = "http://localhost:3002/productos";
   const options = {

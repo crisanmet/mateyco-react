@@ -14,7 +14,7 @@ const ItemDetail = (props) => {
         <p className="precio">{props.price} </p>
       </div>
 
-      <ItemCount />
+      <ItemCount initialValue={1} />
     </div>
   );
 };

@@ -1,7 +1,8 @@
 import react, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./ItemCount.css";
 
-const ItemCount = ({ initialValue = 1, stock = 10 }) => {
+const ItemCount = ({ initialValue, stock = 10 }) => {
   const [value, setValue] = useState(initialValue);
 
   const agregarCarrito = () => {
@@ -26,6 +27,11 @@ const ItemCount = ({ initialValue = 1, stock = 10 }) => {
         <button type="button" className="btn" onClick={eliminarCarrito}>
           Eliminar
         </button>
+        <Link to="/cart">
+          <button type="button" className="btn">
+            Terminar compra!
+          </button>
+        </Link>
       </div>
     </div>
   );

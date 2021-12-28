@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../Category/Category.css";
 
-export const Category = (props) => {
+export const Category = () => {
   const [categories, setCategories] = useState();
   const [categorySelected, setCategorySelected] = useState(false);
+  const { categoryName } = useParams();
 
   const API = "http://localhost:3002";
 
@@ -66,7 +67,7 @@ export const Category = (props) => {
                 <div className="categories">
                   <ul>
                     <li onClick={(e) => FilterResults(e.target.innerText)}>
-                      {item.categoryName} <Link to="/hola"> </Link>
+                      {item.categoryName}
                     </li>
                   </ul>
                 </div>

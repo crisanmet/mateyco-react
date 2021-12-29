@@ -1,13 +1,31 @@
-import react, { useState } from "react";
+import react, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 import "./ItemCount.css";
 
-const ItemCount = ({ initialValue, stock = 10 }) => {
+const ItemCount = ({
+  initialValue,
+  stock = 10,
+  id,
+  title,
+  price,
+  cantidad,
+}) => {
   const [value, setValue] = useState(initialValue);
+  const [cart, setCart] = useContext(CartContext);
+
+  const carrito = {
+    id: id,
+    name: title,
+    price: price,
+    cantidad: cantidad,
+  };
 
   const agregarCarrito = () => {
     if (value < stock) setValue((val) => val + 1);
     else alert("No hay mas stock");
+
+    setCart((carritoActual) => [...carritoActual, carrito]);
   };
 
   const eliminarCarrito = () => {

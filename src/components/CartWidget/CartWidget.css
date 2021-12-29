@@ -1,0 +1,14 @@
+.count {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  background: crimson;
+  font-size: 1rem;
+  color: white;
+  padding: 3px 5px;
+  border-radius: 50%;
+}
+.icon {
+  cursor: pointer;
+  position: relative;
+}

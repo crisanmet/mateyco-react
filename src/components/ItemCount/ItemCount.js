@@ -21,16 +21,41 @@ const ItemCount = ({
     cantidad: cantidad,
   };
 
-  const agregarCarrito = () => {
+  const agregarCarrito = (id) => {
     if (value < stock) setValue((val) => val + 1);
     else alert("No hay mas stock");
-
-    setCart((carritoActual) => [...carritoActual, carrito]);
+    const existe = () => {
+      if (cart.length === 0)
+        return setCart((carritoActual) => [...carritoActual, carrito]);
+      cart.map((item) => {
+        if (item.id === id) {
+          item.cantidad += 1;
+          setCart((carritoActual) => [...carritoActual]);
+        } else {
+          setCart((carritoActual) => [...carritoActual, carrito]);
+        }
+      });
+    };
+    existe();
   };
+  console.log(cart);
 
-  const eliminarCarrito = () => {
+  const eliminarCarrito = (id) => {
     if (value <= 0) return;
     setValue((val) => val - 1);
+
+    const existe = () => {
+      if (cart.length === 0) return;
+      cart.forEach((item) => {
+        if (item.id === id) {
+          item.cantidad -= 1;
+          setCart((carritoActual) => [...carritoActual]);
+        } else {
+          setCart((carritoActual) => [...carritoActual, carrito]);
+        }
+      });
+    };
+    existe();
   };
   return (
     <div className="cantidad">
@@ -39,10 +64,22 @@ const ItemCount = ({
 
       <span>/Kg</span>
       <div className="botones">
-        <button type="button" className="btn" onClick={agregarCarrito}>
+        <button
+          type="button"
+          className="btn"
+          onClick={() => {
+            agregarCarrito(id);
+          }}
+        >
           Agregar
         </button>
-        <button type="button" className="btn" onClick={eliminarCarrito}>
+        <button
+          type="button"
+          className="btn"
+          onClick={() => {
+            eliminarCarrito(id);
+          }}
+        >
           Eliminar
         </button>
         <Link to="/cart">

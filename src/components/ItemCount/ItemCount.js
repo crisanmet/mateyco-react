@@ -26,8 +26,8 @@ const ItemCount = ({
     else alert("No hay mas stock");
     const existe = () => {
       if (cart.length === 0)
-        return setCart((carritoActual) => [...carritoActual, carrito]);
-      cart.map((item) => {
+        setCart((carritoActual) => [...carritoActual, carrito]);
+      cart.forEach((item) => {
         if (item.id === id) {
           item.cantidad += 1;
           setCart((carritoActual) => [...carritoActual]);
@@ -45,8 +45,12 @@ const ItemCount = ({
     setValue((val) => val - 1);
 
     const existe = () => {
-      if (cart.length === 0) return;
       cart.forEach((item) => {
+        // if (item.cantidad < 1) {
+        //   const copyCart = [...cart];
+        //   copyCart.filter((cartItem) => cartItem.id !== id);
+        //   setCart(copyCart);
+        // }
         if (item.id === id) {
           item.cantidad -= 1;
           setCart((carritoActual) => [...carritoActual]);

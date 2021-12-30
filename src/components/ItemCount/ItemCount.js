@@ -21,46 +21,31 @@ const ItemCount = ({
     cantidad: cantidad,
   };
 
-  const agregarCarrito = (id) => {
+  function agregarItemCarrito(id, value) {
     if (value < stock) setValue((val) => val + 1);
     else alert("No hay mas stock");
-    const existe = () => {
-      if (cart.length === 0)
-        setCart((carritoActual) => [...carritoActual, carrito]);
-      cart.forEach((item) => {
-        if (item.id === id) {
-          item.cantidad += 1;
-          //setCart((carritoActual) => [...carritoActual]);
-        } else {
-          setCart((carritoActual) => [...carritoActual, carrito]);
-        }
-      });
-    };
-    existe();
-  };
+    if (cart.some((p) => p.id === id)) {
+      let newCart = [...cart];
+
+      let repetido = newCart.find((p) => p.id === id);
+
+      repetido.cantidad += 1;
+
+      setCart(newCart);
+    } else {
+      setCart([...cart, carrito]);
+    }
+  }
   console.log(cart);
 
-  const eliminarCarrito = (id) => {
+  function eliminarItemCarrito(id) {
     if (value <= 0) return;
     setValue((val) => val - 1);
+    let newCart = cart.filter((p) => p.id !== id);
 
-    const existe = () => {
-      cart.forEach((item) => {
-        // if (item.cantidad < 1) {
-        //   const copyCart = [...cart];
-        //   copyCart.filter((cartItem) => cartItem.id !== id);
-        //   setCart(copyCart);
-        // }
-        if (item.id === id) {
-          item.cantidad -= 1;
-          setCart((carritoActual) => [...carritoActual]);
-        } else {
-          setCart((carritoActual) => [...carritoActual, carrito]);
-        }
-      });
-    };
-    existe();
-  };
+    setCart(newCart);
+  }
+
   return (
     <div className="cantidad">
       <span>Cantidad:</span>
@@ -72,23 +57,23 @@ const ItemCount = ({
           type="button"
           className="btn"
           onClick={() => {
-            agregarCarrito(id);
+            agregarItemCarrito(id, value);
           }}
         >
-          Agregar
+          +
         </button>
         <button
           type="button"
           className="btn"
           onClick={() => {
-            eliminarCarrito(id);
+            eliminarItemCarrito(id);
           }}
         >
-          Eliminar
+          -
         </button>
         <Link to="/cart">
           <button type="button" className="btn">
-            Terminar compra!
+            Agregar al Cart!
           </button>
         </Link>
       </div>

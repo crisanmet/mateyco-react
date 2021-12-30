@@ -7,6 +7,11 @@ import "../CartWidget/CartWidget.css";
 
 function CartWidget() {
   const [cart, setCart] = useContext(CartContext);
+  let count = 0;
+  cart.forEach((item) => {
+    count += item.cantidad;
+  });
+  console.log(count);
   return (
     <div>
       <Link to="/cart">
@@ -15,7 +20,7 @@ function CartWidget() {
           size="2x"
           className="icon"
         ></FontAwesomeIcon>
-        <span className="count">{cart.length} </span>
+        <span className="count">{count} </span>
       </Link>
     </div>
   );

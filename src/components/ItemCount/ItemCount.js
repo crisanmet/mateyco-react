@@ -30,7 +30,7 @@ const ItemCount = ({
       cart.forEach((item) => {
         if (item.id === id) {
           item.cantidad += 1;
-          setCart((carritoActual) => [...carritoActual]);
+          //setCart((carritoActual) => [...carritoActual]);
         } else {
           setCart((carritoActual) => [...carritoActual, carrito]);
         }

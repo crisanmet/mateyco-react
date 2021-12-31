@@ -40,7 +40,7 @@ const ItemCount = ({
 
   function eliminarItemCarrito(id) {
     if (value <= 0) return;
-    setValue((val) => val - 1);
+    setValue((val) => (val = 0));
     let newCart = cart.filter((p) => p.id !== id);
 
     setCart(newCart);
@@ -71,11 +71,6 @@ const ItemCount = ({
         >
           -
         </button>
-        <Link to="/cart">
-          <button type="button" className="btn">
-            Agregar al Cart!
-          </button>
-        </Link>
       </div>
     </div>
   );

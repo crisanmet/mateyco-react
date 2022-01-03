@@ -19,7 +19,6 @@ const ItemDetail = (props) => {
         id={props.id}
         title={props.title}
         price={props.price}
-        cantidad={1}
       />
     </div>
   );

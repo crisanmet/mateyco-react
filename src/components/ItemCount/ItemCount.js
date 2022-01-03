@@ -18,29 +18,35 @@ const ItemCount = ({
     id: id,
     name: title,
     price: price,
-    cantidad: cantidad,
+    cantidad,
   };
 
   function agregarItemCarrito(id, value) {
     if (value < stock) setValue((val) => val + 1);
     else alert("No hay mas stock");
+  }
+  console.log(cart);
+
+  function agregarAlCarrito(id, value) {
     if (cart.some((p) => p.id === id)) {
       let newCart = [...cart];
 
       let repetido = newCart.find((p) => p.id === id);
 
-      repetido.cantidad += 1;
+      repetido.cantidad += value;
 
       setCart(newCart);
     } else {
+      carrito.cantidad = value;
       setCart([...cart, carrito]);
     }
+    setValue(0);
   }
-  console.log(cart);
-
-  function eliminarItemCarrito(id) {
+  function eliminarItemCarrito() {
     if (value <= 0) return;
-    setValue((val) => (val = 0));
+    setValue((val) => val - 1);
+  }
+  function eliminarItemDelCarrito() {
     let newCart = cart.filter((p) => p.id !== id);
 
     setCart(newCart);
@@ -70,6 +76,15 @@ const ItemCount = ({
           }}
         >
           -
+        </button>
+        <button
+          type="button"
+          className="btn"
+          onClick={() => {
+            agregarAlCarrito(id, value);
+          }}
+        >
+          Agregar!
         </button>
       </div>
     </div>

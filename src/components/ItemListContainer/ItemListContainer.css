@@ -38,20 +38,7 @@
   padding: 0 0.7rem;
   font-size: 1.7rem;
 }
-.productos-ind button {
-  align-items: center;
-  justify-content: center;
-  margin-top: 1rem;
-  background: green;
-  color: #fff;
-  padding: 0.8rem 3rem;
-  font-size: 1.7rem;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  outline: 2px solid green;
-  outline-offset: 2px;
-}
+
 .productos-ind button:hover {
   background-color: black;
 }

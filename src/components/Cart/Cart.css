@@ -1,0 +1,32 @@
+.container-carrito {
+  display: flex;
+  justify-content: center;
+}
+table {
+  margin: 5rem;
+}
+.img-td {
+  object-fit: contain;
+  width: 10rem;
+}
+.btn-carrito {
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  background: green;
+  color: #fff;
+  padding: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  outline: 2px solid green;
+  outline-offset: 2px;
+}
+
+.carrito-vacio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

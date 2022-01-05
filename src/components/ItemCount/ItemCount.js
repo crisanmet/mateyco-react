@@ -10,6 +10,7 @@ const ItemCount = ({
   title,
   price,
   cantidad,
+  image,
 }) => {
   const [value, setValue] = useState(initialValue);
   const [cart, setCart] = useContext(CartContext);
@@ -18,6 +19,7 @@ const ItemCount = ({
     id: id,
     name: title,
     price: price,
+    image: image,
     cantidad,
   };
 
@@ -25,7 +27,6 @@ const ItemCount = ({
     if (value < stock) setValue((val) => val + 1);
     else alert("No hay mas stock");
   }
-  console.log(cart);
 
   function agregarAlCarrito(id, value) {
     if (cart.some((p) => p.id === id)) {
@@ -45,11 +46,6 @@ const ItemCount = ({
   function eliminarItemCarrito() {
     if (value <= 0) return;
     setValue((val) => val - 1);
-  }
-  function eliminarItemDelCarrito() {
-    let newCart = cart.filter((p) => p.id !== id);
-
-    setCart(newCart);
   }
 
   return (

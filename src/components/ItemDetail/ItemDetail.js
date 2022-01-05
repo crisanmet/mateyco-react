@@ -19,6 +19,7 @@ const ItemDetail = (props) => {
         id={props.id}
         title={props.title}
         price={props.price}
+        image={props.image}
       />
     </div>
   );

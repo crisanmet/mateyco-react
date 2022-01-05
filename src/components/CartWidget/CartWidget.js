@@ -11,7 +11,7 @@ function CartWidget() {
   cart.forEach((item) => {
     count += item.cantidad;
   });
-  console.log(count);
+
   return (
     <div>
       <Link to="/cart">

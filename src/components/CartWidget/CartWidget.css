@@ -1,7 +1,7 @@
 .count {
   position: absolute;
   top: -1px;
-  right: -1px;
+  margin-left: -5px;
   background: crimson;
   font-size: 1rem;
   color: white;
@@ -11,4 +11,7 @@
 .icon {
   cursor: pointer;
   position: relative;
+}
+.hide {
+  display: none;
 }

@@ -5,10 +5,15 @@ import { CartContext } from "../../context/CartContext";
 
 export const CartItem = (props) => {
   const [cart, setCart] = useContext(CartContext);
-
   const [value, setValue] = useState(props.cantidad);
 
-  console.log(cart);
+  const precioTotalUnitario = (id) => {
+    const articulo = cart.find((p) => p.id === id);
+    const totalArticulo = articulo.cantidad * articulo.price;
+
+    return totalArticulo;
+  };
+
   const aumentarItem = (value, id) => {
     setValue((val) => val + 1);
     if (cart.some((p) => p.id === id)) {
@@ -52,7 +57,7 @@ export const CartItem = (props) => {
       <td>{props.title}</td>
       <td>${props.price} </td>
       <td>{value} </td>
-      <td>
+      <td className="container-btn">
         <button
           className="btn-carrito"
           onClick={() => {
@@ -62,7 +67,7 @@ export const CartItem = (props) => {
           +
         </button>
         <button
-          className="btn-carrito"
+          className="btn-carrito-eliminar"
           onClick={() => {
             disminuirItem(value, props.id);
           }}
@@ -70,16 +75,7 @@ export const CartItem = (props) => {
           -
         </button>
       </td>
-      <td>total </td>
-      <td>
-        <button
-          onClick={() => {
-            eliminarItem(value, props.id);
-          }}
-        >
-          Eliminar
-        </button>
-      </td>
+      <td>${new Intl.NumberFormat().format(precioTotalUnitario(props.id))} </td>
     </tr>
   );
 };

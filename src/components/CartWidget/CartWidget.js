@@ -20,7 +20,11 @@ function CartWidget() {
           size="2x"
           className="icon"
         ></FontAwesomeIcon>
-        <span className="count">{count} </span>
+        {cart.length > 0 ? (
+          <span className="count">{count} </span>
+        ) : (
+          <span className="hide"></span>
+        )}
       </Link>
     </div>
   );

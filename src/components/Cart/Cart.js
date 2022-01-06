@@ -5,7 +5,19 @@ import { CartContext } from "../../context/CartContext";
 
 export const Cart = () => {
   const [cart, setCart] = useContext(CartContext);
-  console.log(cart);
+
+  const precioTotal = () => {
+    let total = 0;
+
+    cart.forEach((art) => {
+      total += art.price * art.cantidad;
+    });
+    return total;
+  };
+
+  const vaciarCarrito = () => {
+    setCart([]);
+  };
 
   return (
     <section className="container-carrito">
@@ -31,12 +43,43 @@ export const Cart = () => {
             />
           ))
         ) : (
-          <section className="carrito-vacio">
-            <h2>Su carrito está vacío</h2>
-            <Link to="/">Volver al Home</Link>
-          </section>
+          <>
+            <th className="carrito-vacio" scope="row" colSpan={6}>
+              Carrito vacío -{" "}
+              <Link to="/">
+                <button className="btn">Volver al Home</button>
+              </Link>
+            </th>
+          </>
         )}
       </table>
+      {cart.length > 0 && (
+        <section className="total">
+          <p>Total: ${new Intl.NumberFormat().format(precioTotal())} </p>
+        </section>
+      )}
+      {cart.length > 0 && (
+        <section className="comprar">
+          <Link to="/checkout">
+            <button
+              className="btn-comprar"
+              onClick={() => {
+                vaciarCarrito();
+              }}
+            >
+              Comprar
+            </button>{" "}
+          </Link>
+          <button
+            className="btn-eliminar"
+            onClick={() => {
+              vaciarCarrito();
+            }}
+          >
+            Vaciar carrito
+          </button>
+        </section>
+      )}
     </section>
   );
 };

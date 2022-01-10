@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { Link, useParams } from "react-router-dom";
+import {
+  collection,
+  getDoc,
+  doc,
+  get,
+  getDocs,
+  getFirestore,
+} from "firebase/firestore";
 import "../Category/Category.css";
 
 export const Category = () => {
@@ -30,16 +38,29 @@ export const Category = () => {
     }
   };
 
-  useEffect(() => {
-    const getItem = async () => {
-      try {
-        let responseApi = await fetch(`${API}/categories`);
-        let jsonResponse = await responseApi.json();
+  // useEffect(() => {
+  //   const getItem = async () => {
+  //     try {
+  //       let responseApi = await fetch(`${API}/categories`);
+  //       let jsonResponse = await responseApi.json();
 
-        setCategories(jsonResponse);
-      } catch (error) {
-        console.log(error);
-      }
+  //       setCategories(jsonResponse);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getItem();
+  // }, []);
+
+  useEffect(() => {
+    const getItem = () => {
+      const API = getFirestore();
+
+      const itemsCollection = collection(API, "categories");
+      getDocs(itemsCollection).then((res) => {
+        console.log(res.docs.map((art) => ({ ...art.data() })));
+        setCategories(res.docs.map((art) => ({ ...art.data() })));
+      });
     };
     getItem();
   }, []);

@@ -1,5 +1,6 @@
 import React from "react";
 import ItemCount from "../ItemCount/ItemCount";
+
 import { Link } from "react-router-dom";
 
 const ItemDetail = (props) => {
@@ -20,6 +21,7 @@ const ItemDetail = (props) => {
         title={props.title}
         price={props.price}
         image={props.image}
+        stock={props.stock}
       />
     </div>
   );

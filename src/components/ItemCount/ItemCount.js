@@ -5,12 +5,12 @@ import "./ItemCount.css";
 
 const ItemCount = ({
   initialValue,
-  stock = 10,
   id,
   title,
   price,
   cantidad,
   image,
+  stock,
 }) => {
   const [value, setValue] = useState(initialValue);
   const [cart, setCart] = useContext(CartContext);
@@ -21,8 +21,10 @@ const ItemCount = ({
     price: price,
     image: image,
     cantidad,
+    stock: stock,
   };
 
+  console.log(cart);
   function agregarItemCarrito(id, value) {
     // if (value < stock)
     setValue((val) => val + 1);
@@ -36,9 +38,11 @@ const ItemCount = ({
       let repetido = newCart.find((p) => p.id === id);
 
       repetido.cantidad += value;
+      repetido.stock -= value;
 
       setCart(newCart);
     } else {
+      carrito.stock -= value;
       carrito.cantidad = value;
       setCart([...cart, carrito]);
     }

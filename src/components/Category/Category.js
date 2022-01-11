@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { Link, useParams } from "react-router-dom";
-import {
-  collection,
-  getDoc,
-  doc,
-  get,
-  getDocs,
-  getFirestore,
-} from "firebase/firestore";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 import "../Category/Category.css";
 
 export const Category = () => {
@@ -16,41 +9,26 @@ export const Category = () => {
   const [categorySelected, setCategorySelected] = useState(false);
   const { categoryName } = useParams();
 
-  const API = "http://localhost:3002";
-
-  const FilterResults = async (e) => {
+  const filterResults = (e) => {
     const category = e.toLowerCase();
-    try {
-      let responseApi = await fetch(`${API}/productos `);
-      let jsonResponse = await responseApi.json();
-      const result = await jsonResponse
-        .filter((cat) => {
-          return cat.categoryName === category;
+
+    const API = getFirestore();
+
+    const itemsCollection = collection(API, "productos");
+    getDocs(itemsCollection).then((res) => {
+      console.log(res.docs.map((art) => ({ ...art.data() })));
+      const result = res.docs.map((art) => ({ ...art.data() }));
+      const categorySelected = result
+        .filter((art) => {
+          return art.categoryName === category;
         })
         .map((item) => {
           return item;
         });
-
       setCategorySelected(true);
-      setCategories(result);
-    } catch (error) {
-      console.log(error);
-    }
+      setCategories(categorySelected);
+    });
   };
-
-  // useEffect(() => {
-  //   const getItem = async () => {
-  //     try {
-  //       let responseApi = await fetch(`${API}/categories`);
-  //       let jsonResponse = await responseApi.json();
-
-  //       setCategories(jsonResponse);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   getItem();
-  // }, []);
 
   useEffect(() => {
     const getItem = () => {
@@ -65,6 +43,7 @@ export const Category = () => {
     getItem();
   }, []);
 
+  console.log(categorySelected);
   return (
     <>
       <div className="productos-contenedor">
@@ -87,9 +66,11 @@ export const Category = () => {
               return (
                 <div className="categories">
                   <ul>
-                    <li onClick={(e) => FilterResults(e.target.innerText)}>
-                      {item.categoryName}
-                    </li>
+                    <Link to={`/category/${item.categoryName}`}>
+                      <li onClick={(e) => filterResults(e.target.innerText)}>
+                        {item.categoryName}
+                      </li>
+                    </Link>
                   </ul>
                 </div>
               );

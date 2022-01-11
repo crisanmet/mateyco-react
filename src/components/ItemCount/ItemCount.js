@@ -24,8 +24,9 @@ const ItemCount = ({
   };
 
   function agregarItemCarrito(id, value) {
-    if (value < stock) setValue((val) => val + 1);
-    else alert("No hay mas stock");
+    // if (value < stock)
+    setValue((val) => val + 1);
+    // else alert("No hay mas stock");
   }
 
   function agregarAlCarrito(id, value) {

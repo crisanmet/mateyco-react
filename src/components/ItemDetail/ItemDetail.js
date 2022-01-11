@@ -13,7 +13,7 @@ const ItemDetail = (props) => {
         <span>$</span>
         <p className="precio">{props.price} </p>
       </div>
-
+      {/* <h4>Stock disponible: {props.stock} u. </h4> */}
       <ItemCount
         initialValue={0}
         id={props.id}

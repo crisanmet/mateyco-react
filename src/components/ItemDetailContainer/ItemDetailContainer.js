@@ -21,7 +21,6 @@ export const ItemDetailContainer = () => {
 
       const itemsCollection = collection(API, "productos");
       getDocs(itemsCollection).then((res) => {
-        console.log(res.docs.map((art) => ({ ...art.data() })));
         setItems(res.docs.map((art) => ({ ...art.data() })));
       });
     };

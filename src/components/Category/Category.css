@@ -14,3 +14,34 @@
   background-color: green;
   color: white;
 }
+.titulo-categoria {
+  text-align: center;
+  margin: 1rem;
+  font-size: 2rem;
+}
+.loader {
+  text-align: center;
+  margin: 1rem;
+  font-size: 2rem;
+}
+
+.buttons-categorias {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons-categorias button {
+  margin: 1rem;
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  border: 2px solid white;
+  cursor: pointer;
+  color: black;
+  text-transform: uppercase;
+}
+.buttons-categorias button:hover {
+  background-color: green;
+  color: white;
+}

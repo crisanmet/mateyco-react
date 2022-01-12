@@ -5,77 +5,89 @@ import { collection, getDocs, getFirestore } from "firebase/firestore";
 import "../Category/Category.css";
 
 export const Category = () => {
-  const [categories, setCategories] = useState();
-  const [categorySelected, setCategorySelected] = useState(false);
-  const { categoryName } = useParams();
-
-  const filterResults = (e) => {
-    const category = e.toLowerCase();
-
-    const API = getFirestore();
-
-    const itemsCollection = collection(API, "productos");
-    getDocs(itemsCollection).then((res) => {
-      console.log(res.docs.map((art) => ({ ...art.data() })));
-      const result = res.docs.map((art) => ({ ...art.data() }));
-      const categorySelected = result
-        .filter((art) => {
-          return art.categoryName === category;
-        })
-        .map((item) => {
-          return item;
-        });
-      setCategorySelected(true);
-      setCategories(categorySelected);
-    });
-  };
+  const [data, setData] = useState([]);
+  const [filter, setFilter] = useState(data);
+  const [loading, setLoading] = useState(false);
+  let componentMounted = true;
 
   useEffect(() => {
     const getItem = () => {
+      setLoading(true);
       const API = getFirestore();
 
-      const itemsCollection = collection(API, "categories");
-      getDocs(itemsCollection).then((res) => {
-        console.log(res.docs.map((art) => ({ ...art.data() })));
-        setCategories(res.docs.map((art) => ({ ...art.data() })));
-      });
+      const itemsCollection = collection(API, "productos");
+      if (componentMounted) {
+        getDocs(itemsCollection).then((res) => {
+          setData(res.docs.map((art) => ({ ...art.data() })));
+          setFilter(res.docs.map((art) => ({ ...art.data() })));
+          setLoading(false);
+        });
+        return (componentMounted = false);
+      }
     };
     getItem();
   }, []);
 
-  console.log(categorySelected);
-  return (
-    <>
-      <div className="productos-contenedor">
-        {categorySelected
-          ? categories &&
-            categories.map((item) => {
-              return (
+  const Loading = () => {
+    return (
+      <>
+        <h3 className="loader">Cargando...</h3>
+      </>
+    );
+  };
+
+  const filterProducts = (cat) => {
+    const categorySelected = data.filter((art) => art.categoryName === cat);
+
+    setFilter(categorySelected);
+  };
+
+  const ShowProducts = () => {
+    return (
+      <>
+        <div className="buttons-categorias">
+          <Link to="/category/">
+            <button onClick={() => setFilter(data)}>Todos</button>
+          </Link>
+          <Link to="/category/yerba">
+            <button onClick={() => filterProducts("yerba")}>Yerbas</button>{" "}
+          </Link>
+          <Link to="/category/termo">
+            <button onClick={() => filterProducts("termo")}>Termos</button>
+          </Link>
+          <Link to="/category/bombilla">
+            <button onClick={() => filterProducts("bombilla")}>
+              Bombillas
+            </button>
+          </Link>
+        </div>
+        <div className="productos-contenedor">
+          {filter.map((art) => {
+            return (
+              <>
                 <ItemDetail
-                  key={item.id}
-                  category={item.categoryName}
-                  id={item.id}
-                  title={item.nombre}
-                  image={item.img}
-                  price={item.precio}
+                  key={art.id}
+                  category={art.categoryName}
+                  id={art.id}
+                  title={art.nombre}
+                  image={art.img}
+                  price={art.precio}
                 />
-              );
-            })
-          : categories &&
-            categories.map((item) => {
-              return (
-                <div className="categories">
-                  <ul>
-                    <Link to={`/category/${item.categoryName}`}>
-                      <li onClick={(e) => filterResults(e.target.innerText)}>
-                        {item.categoryName}
-                      </li>
-                    </Link>
-                  </ul>
-                </div>
-              );
-            })}
+              </>
+            );
+          })}
+        </div>
+      </>
+    );
+  };
+  return (
+    <div>
+      <div className="titulo-categoria">
+        <h2>Nuevos Productos</h2>
       </div>
-    </>
+      <div className="categorias">
+        {loading ? <Loading /> : <ShowProducts />}
+      </div>
+    </div>
   );
 };

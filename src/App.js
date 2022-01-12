@@ -5,6 +5,7 @@ import { Category } from "./components/Category/Category";
 import { Cart } from "./components/Cart/Cart";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
+import Error404 from "./components/Error/Error404";
 
 import "./App.css";
 
@@ -31,6 +32,7 @@ function App() {
             element={<Category />}
           ></Route>
           <Route exact path="/cart" element={<Cart />}></Route>
+          <Route exact path="*" component={Error404} />
         </Routes>
       </Router>
     </CartProvider>

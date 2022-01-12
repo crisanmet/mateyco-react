@@ -24,7 +24,6 @@ const ItemCount = ({
     stock: stock,
   };
 
-  console.log(cart);
   function agregarItemCarrito(id, value) {
     // if (value < stock)
     setValue((val) => val + 1);

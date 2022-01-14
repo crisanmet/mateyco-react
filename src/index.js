@@ -7,9 +7,9 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: `${process.env.FIREBASE_API_KEY}`,
+  apiKey: "AIzaSyCG85_UAe6EkHl1Ga599L5xcWuC_uiwNds",
   authDomain: "mateyco-ecommerce.firebaseapp.com",
-  projectId: `${process.env.REACT_APP_FIREBASE_PROJECT_ID}`,
+  projectId: "mateyco-ecommerce",
   storageBucket: "mateyco-ecommerce.appspot.com",
   messagingSenderId: "63943788944",
   appId: "1:63943788944:web:526262e1ff6bca443d8b15",

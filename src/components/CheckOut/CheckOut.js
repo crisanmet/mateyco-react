@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { collection, addDoc, getFirestore } from "firebase/firestore";
 import "../CheckOut/CheckOut.css";
 
 export const CheckOut = () => {
   const [cart, setCart] = useContext(CartContext);
+  const [orderId, setOrderId] = useState("");
 
   let total = 0;
 
@@ -17,7 +19,9 @@ export const CheckOut = () => {
     email: "",
     cart,
     total,
+    date: new Date(),
   });
+
   console.log(order);
 
   const handleNombreInput = (e) => {
@@ -39,13 +43,18 @@ export const CheckOut = () => {
     }
     setSubmitted(true);
   };
+
+  const sendOrder = () => {
+    const orderFirebase = order;
+    const db = getFirestore();
+
+    const orderCollection = collection(db, "orders");
+    addDoc(orderCollection, orderFirebase).then(({ id }) => setOrderId(id));
+  };
   return (
     <div class="form-container">
       <form class="register-form" onSubmit={handleSubmit}>
         <h2>Confirme sus datos:</h2>
-        {submitted && valid ? (
-          <div class="success-message">Gracias! Por su compra</div>
-        ) : null}
 
         <input
           onChange={handleNombreInput}
@@ -93,9 +102,17 @@ export const CheckOut = () => {
           </span>
         ) : null}
 
-        <button class="form-field" type="submit">
+        <button class="form-field" type="submit" onClick={sendOrder}>
           Pagar!
         </button>
+        {submitted && valid ? (
+          <div class="success-message">
+            Gracias! Por su compra, su número de orden es{" "}
+            <b>
+              <i>{orderId}</i>{" "}
+            </b>
+          </div>
+        ) : null}
       </form>
     </div>
   );

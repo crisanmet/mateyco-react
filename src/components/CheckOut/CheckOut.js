@@ -11,30 +11,30 @@ export const CheckOut = () => {
     total += art.price * art.cantidad;
   });
 
-  const [values, setValues] = useState({
+  const [order, setOrder] = useState({
     nombre: "",
     apellido: "",
     email: "",
     cart,
     total,
   });
-  console.log(values);
+  console.log(order);
 
   const handleNombreInput = (e) => {
-    setValues({ ...values, nombre: e.target.value });
+    setOrder({ ...order, nombre: e.target.value });
   };
   const handleApellidoInput = (e) => {
-    setValues({ ...values, apellido: e.target.value });
+    setOrder({ ...order, apellido: e.target.value });
   };
   const handleEmailInput = (e) => {
-    setValues({ ...values, email: e.target.value });
+    setOrder({ ...order, email: e.target.value });
   };
 
   const [submitted, setSubmitted] = useState(false);
   const [valid, setValid] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (values.nombre && values.apellido && values.email) {
+    if (order.nombre && order.apellido && order.email) {
       setValid(true);
     }
     setSubmitted(true);
@@ -49,7 +49,7 @@ export const CheckOut = () => {
 
         <input
           onChange={handleNombreInput}
-          value={values.nombre}
+          value={order.nombre}
           id="first-name"
           class="form-field"
           type="text"
@@ -57,7 +57,7 @@ export const CheckOut = () => {
           name="firstName"
         />
 
-        {submitted && !values.nombre ? (
+        {submitted && !order.nombre ? (
           <span id="first-name-error" className="span-form">
             Por favor ingrese su nombre.
           </span>
@@ -65,14 +65,14 @@ export const CheckOut = () => {
 
         <input
           onChange={handleApellidoInput}
-          value={values.apellido}
+          value={order.apellido}
           id="last-name"
           class="form-field"
           type="text"
           placeholder="Apellido"
           name="lastName"
         />
-        {submitted && !values.apellido ? (
+        {submitted && !order.apellido ? (
           <span id="last-name-error" className="span-form">
             Por favor ingrese su apellido
           </span>
@@ -80,14 +80,14 @@ export const CheckOut = () => {
 
         <input
           onChange={handleEmailInput}
-          value={values.email}
+          value={order.email}
           id="email"
           class="form-field"
           type="email"
           placeholder="Email"
           name="email"
         />
-        {submitted && !values.email ? (
+        {submitted && !order.email ? (
           <span id="email-error" className="span-form">
             Por favor ingresar un Email vàlido
           </span>

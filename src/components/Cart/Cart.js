@@ -61,14 +61,7 @@ export const Cart = () => {
       {cart.length > 0 && (
         <section className="comprar">
           <Link to="/checkout">
-            <button
-              className="btn-comprar"
-              onClick={() => {
-                vaciarCarrito();
-              }}
-            >
-              Comprar
-            </button>{" "}
+            <button className="btn-comprar">Comprar</button>{" "}
           </Link>
           <button
             className="btn-eliminar"

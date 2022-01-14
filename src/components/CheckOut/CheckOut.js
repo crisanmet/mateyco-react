@@ -4,11 +4,21 @@ import "../CheckOut/CheckOut.css";
 
 export const CheckOut = () => {
   const [cart, setCart] = useContext(CartContext);
+
+  let total = 0;
+
+  cart.forEach((art) => {
+    total += art.price * art.cantidad;
+  });
+
   const [values, setValues] = useState({
     nombre: "",
     apellido: "",
     email: "",
+    cart,
+    total,
   });
+  console.log(values);
 
   const handleNombreInput = (e) => {
     setValues({ ...values, nombre: e.target.value });
@@ -32,6 +42,7 @@ export const CheckOut = () => {
   return (
     <div class="form-container">
       <form class="register-form" onSubmit={handleSubmit}>
+        <h2>Confirme sus datos:</h2>
         {submitted && valid ? (
           <div class="success-message">Gracias! Por su compra</div>
         ) : null}
@@ -47,7 +58,9 @@ export const CheckOut = () => {
         />
 
         {submitted && !values.nombre ? (
-          <span id="first-name-error">Por favor ingrese su nombre.</span>
+          <span id="first-name-error" className="span-form">
+            Por favor ingrese su nombre.
+          </span>
         ) : null}
 
         <input
@@ -60,7 +73,9 @@ export const CheckOut = () => {
           name="lastName"
         />
         {submitted && !values.apellido ? (
-          <span id="last-name-error">Por favor ingrese su apellido</span>
+          <span id="last-name-error" className="span-form">
+            Por favor ingrese su apellido
+          </span>
         ) : null}
 
         <input
@@ -73,7 +88,9 @@ export const CheckOut = () => {
           name="email"
         />
         {submitted && !values.email ? (
-          <span id="email-error">Por favor ingresar un Email vàlido</span>
+          <span id="email-error" className="span-form">
+            Por favor ingresar un Email vàlido
+          </span>
         ) : null}
 
         <button class="form-field" type="submit">

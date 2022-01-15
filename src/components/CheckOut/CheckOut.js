@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { collection, addDoc, getFirestore } from "firebase/firestore";
+import { CreatePdf } from "./CreatePdf";
 import "../CheckOut/CheckOut.css";
 
 export const CheckOut = () => {
@@ -49,7 +50,10 @@ export const CheckOut = () => {
     const db = getFirestore();
 
     const orderCollection = collection(db, "orders");
-    addDoc(orderCollection, orderFirebase).then(({ id }) => setOrderId(id));
+    addDoc(orderCollection, orderFirebase).then(({ id }) =>
+      CreatePdf(order, id)
+    );
+    setCart([]);
   };
   return (
     <div class="form-container">
@@ -107,7 +111,7 @@ export const CheckOut = () => {
         </button>
         {submitted && valid ? (
           <div class="success-message">
-            Gracias! Por su compra, su número de orden es{" "}
+            Gracias! Su factura se descargara en unos instantes...
             <b>
               <i>{orderId}</i>{" "}
             </b>

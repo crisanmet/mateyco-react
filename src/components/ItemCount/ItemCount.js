@@ -31,6 +31,7 @@ const ItemCount = ({
   }
 
   function agregarAlCarrito(id, value) {
+    if (value === 0) return;
     if (cart.some((p) => p.id === id)) {
       let newCart = [...cart];
 
@@ -79,7 +80,7 @@ const ItemCount = ({
         </button>
         <button
           type="button"
-          className="btn"
+          className={value === 0 ? "btn-deactivate" : "btn-active"}
           onClick={() => {
             agregarAlCarrito(id, value);
           }}

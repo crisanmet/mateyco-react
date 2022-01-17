@@ -14,7 +14,8 @@
   font-size: 1.7rem;
 }
 
-.btn {
+.btn,
+.btn-active {
   align-items: center;
   justify-content: center;
   margin-top: 1rem;
@@ -28,6 +29,24 @@
   outline: 2px solid green;
   outline-offset: 2px;
 }
+.btn-deactivate {
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  background: #fff;
+  color: black;
+  padding: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  outline: 2px solid green;
+  outline-offset: 2px;
+}
 .btn:hover {
   background-color: black;
+}
+
+.btn-deactivate:hover {
+  background-color: #fff !important ;
 }

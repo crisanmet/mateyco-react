@@ -46,14 +46,16 @@ export const CheckOut = () => {
   };
 
   const sendOrder = () => {
-    const orderFirebase = order;
-    const db = getFirestore();
+    if (order.nombre && order.apellido && order.email) {
+      const orderFirebase = order;
+      const db = getFirestore();
 
-    const orderCollection = collection(db, "orders");
-    addDoc(orderCollection, orderFirebase).then(({ id }) =>
-      CreatePdf(order, id)
-    );
-    setCart([]);
+      const orderCollection = collection(db, "orders");
+      addDoc(orderCollection, orderFirebase).then(({ id }) =>
+        CreatePdf(order, id)
+      );
+      setCart([]);
+    }
   };
   return (
     <div class="form-container">
@@ -112,9 +114,6 @@ export const CheckOut = () => {
         {submitted && valid ? (
           <div class="success-message">
             Gracias! Su factura se descargara en unos instantes...
-            <b>
-              <i>{orderId}</i>{" "}
-            </b>
           </div>
         ) : null}
       </form>
